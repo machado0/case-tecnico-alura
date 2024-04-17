@@ -23,7 +23,7 @@ public class UserController {
     }
 
     @GetMapping
-    public ReducedUserDTO findByUsername(@RequestParam String username) {
+    public ReducedUserDTO findUserByUsername(@RequestParam String username) {
         return userMapper.toReducedDTO(userService.findUserByUsername(username));
     }
 

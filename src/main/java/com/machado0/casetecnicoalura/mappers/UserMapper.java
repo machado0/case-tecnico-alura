@@ -9,7 +9,9 @@ import org.springframework.stereotype.Component;
 public class UserMapper {
 
     public ReducedUserDTO toReducedDTO(User user) {
-        return new ReducedUserDTO(user.getName(), user.getEmail(), user.getRole());
+        return new ReducedUserDTO(user.getName(),
+                user.getEmail(),
+                user.getRole());
     }
 
     public User toEntity(UserDTO userDTO) {
