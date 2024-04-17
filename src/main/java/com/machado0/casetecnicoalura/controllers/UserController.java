@@ -1,8 +1,8 @@
 package com.machado0.casetecnicoalura.controllers;
 
 import com.machado0.casetecnicoalura.domain.user.User;
-import com.machado0.casetecnicoalura.dto.ReducedUserDTO;
-import com.machado0.casetecnicoalura.dto.UserDTO;
+import com.machado0.casetecnicoalura.dto.user.ReducedUserDTO;
+import com.machado0.casetecnicoalura.dto.user.UserDTO;
 import com.machado0.casetecnicoalura.mappers.UserMapper;
 import com.machado0.casetecnicoalura.services.UserService;
 import lombok.RequiredArgsConstructor;
