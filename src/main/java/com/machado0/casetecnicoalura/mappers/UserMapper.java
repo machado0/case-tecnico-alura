@@ -18,6 +18,7 @@ public class UserMapper {
         return User.builder()
                 .email(userDTO.email())
                 .name(userDTO.name())
+                .username(userDTO.username())
                 .password(userDTO.password())
                 .role(userDTO.role())
                 .build();

@@ -10,7 +10,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.UniqueElements;
 
 import java.time.LocalDateTime;
 
@@ -26,21 +25,21 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
+    @NotBlank(message = "Please provide a name")
     private String name;
 
-    @Length(max = 20)
-    @NotBlank
-    @Pattern(regexp = "^[a-z]+$")
+    @Length(max = 20, message = "Please provide a username with a max of 20 characters")
+    @NotBlank(message = "Please provide a username")
+    @Pattern(regexp = "^[a-z]+$", message = "Please provide a username with no numbers or special characters")
     @Column(unique=true)
     private String username;
 
-    @Email
-    @NotBlank
+    @Email(message = "Please provide a valid e-mail")
+    @NotBlank(message = "Please provide an e-mail")
     @Column(unique=true)
     private String email;
 
-    @NotBlank
+    @NotBlank(message = "Please provide a password")
     private String password;
 
     @Enumerated(EnumType.STRING)

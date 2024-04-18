@@ -6,6 +6,7 @@ import com.machado0.casetecnicoalura.mappers.EnrollmentMapper;
 import com.machado0.casetecnicoalura.services.EnrollmentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,7 +19,7 @@ public class EnrollmentController {
     private final EnrollmentMapper enrollmentMapper;
 
     @PostMapping
-    public EnrollmentDTO saveEnrollment(EnrollmentDTO enrollmentDTO) {
+    public EnrollmentDTO saveEnrollment(@RequestBody EnrollmentDTO enrollmentDTO) {
         Enrollment enrollment = enrollmentService.saveEnrollment(enrollmentMapper.toEntity(enrollmentDTO));
         return enrollmentMapper.toDTO(enrollment);
     }

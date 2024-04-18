@@ -3,7 +3,6 @@ package com.machado0.casetecnicoalura.domain.enrollment;
 import com.machado0.casetecnicoalura.domain.course.Course;
 import com.machado0.casetecnicoalura.domain.user.User;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -31,6 +30,5 @@ public class Enrollment {
     @JoinColumn(name = "course_id")
     private Course course;
 
-    @NotBlank
     private LocalDateTime enrolledAt;
 }

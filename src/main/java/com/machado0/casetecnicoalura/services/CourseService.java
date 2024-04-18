@@ -2,6 +2,7 @@ package com.machado0.casetecnicoalura.services;
 
 import com.machado0.casetecnicoalura.domain.course.Course;
 import com.machado0.casetecnicoalura.domain.course.Status;
+import com.machado0.casetecnicoalura.domain.course.exceptions.CourseNotFoundByCodeException;
 import com.machado0.casetecnicoalura.domain.user.Role;
 import com.machado0.casetecnicoalura.domain.user.User;
 import com.machado0.casetecnicoalura.domain.user.exceptions.UserIsNotAnInstructorException;
@@ -33,7 +34,11 @@ public class CourseService {
     }
 
     public void inactivateCourse(String code) {
-        courseRepository.setInactivatedAtByCode(LocalDateTime.now(), code);
+        Course course = courseRepository.findByCode(code)
+                .orElseThrow(() -> new CourseNotFoundByCodeException(code));
+        course.setInactivatedAt(LocalDateTime.now());
+        course.setStatus(Status.INACTIVE);
+        courseRepository.save(course);
     }
 
     public Page<Course> listCoursesByStatus(Status status, Pageable pageable) {

@@ -17,7 +17,7 @@ public class UserController {
     private final UserMapper userMapper;
 
     @PostMapping
-    public ReducedUserDTO saveUser(UserDTO userDTO) {
+    public ReducedUserDTO saveUser(@RequestBody UserDTO userDTO) {
         User user = userService.saveUser(userMapper.toEntity(userDTO));
         return userMapper.toReducedDTO(user);
     }
