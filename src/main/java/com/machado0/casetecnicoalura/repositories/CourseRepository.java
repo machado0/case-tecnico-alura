@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 public interface CourseRepository extends JpaRepository<Course, Long> {
 
@@ -20,4 +21,10 @@ public interface CourseRepository extends JpaRepository<Course, Long> {
     void setInactivatedAtByCode(LocalDateTime inactivatedAt, String code);
 
     Page<Course> findByStatus(Status status, Pageable pageable);
+
+    @Query("SELECT c FROM Course c " +
+            "WHERE c.id = :id " +
+            "AND c.status = com.machado0.casetecnicoalura.domain.course.Status.ACTIVE")
+    Optional<Course> findByIdAndIsActive(Long id);
+
 }

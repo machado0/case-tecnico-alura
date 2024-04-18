@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -38,4 +39,9 @@ public class CourseService {
     public Page<Course> listCoursesByStatus(Status status, Pageable pageable) {
         return courseRepository.findByStatus(status, pageable);
     }
+
+    public Optional<Course> findActiveCourseById(Long id) {
+        return courseRepository.findByIdAndIsActive(id);
+    }
+
 }

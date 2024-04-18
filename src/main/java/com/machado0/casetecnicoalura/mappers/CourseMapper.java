@@ -3,7 +3,7 @@ package com.machado0.casetecnicoalura.mappers;
 import com.machado0.casetecnicoalura.domain.course.Course;
 import com.machado0.casetecnicoalura.domain.user.User;
 import com.machado0.casetecnicoalura.dto.course.CourseDTO;
-import com.machado0.casetecnicoalura.dto.user.UserDTO;
+import com.machado0.casetecnicoalura.dto.user.UserIdDTO;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -13,7 +13,7 @@ public class CourseMapper {
         return new CourseDTO(course.getId(),
                 course.getCode(),
                 course.getName(),
-                toUserDTO(course.getInstructor()),
+                toUserIdDTO(course.getInstructor()),
                 course.getDescription(),
                 course.getStatus(),
                 course.getCreatedAt(),
@@ -25,6 +25,7 @@ public class CourseMapper {
                 .id(courseDTO.id())
                 .code(courseDTO.code())
                 .name(courseDTO.name())
+                .description(courseDTO.description())
                 .instructor(toUserEntity(courseDTO.instructor()))
                 .status(courseDTO.status())
                 .createdAt(courseDTO.createdAt())
@@ -32,17 +33,11 @@ public class CourseMapper {
                 .build();
     }
 
-    private UserDTO toUserDTO(User user) {
-        return new UserDTO(user.getId(),
-                null,
-                null,
-                null,
-                null,
-                null,
-                null);
+    private UserIdDTO toUserIdDTO(User user) {
+        return new UserIdDTO(user.getId());
     }
 
-    private User toUserEntity(UserDTO userDTO) {
+    private User toUserEntity(UserIdDTO userDTO) {
         return User.builder()
                 .id(userDTO.id())
                 .build();
