@@ -34,7 +34,6 @@ public class Feedback {
     @JoinColumn(nullable = false, name = "course_id")
     private Course course;
 
-    @NotBlank(message = "Please provide a rating for the course")
     @Min(value = 0, message = "Please provide a rating with a minimum value of 0")
     @Max(value = 10, message = "Please provide a rating with a maximum value of 10")
     private int rating;
