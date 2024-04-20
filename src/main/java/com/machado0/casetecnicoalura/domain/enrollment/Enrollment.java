@@ -23,11 +23,11 @@ public class Enrollment {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(nullable = false, name = "user_id")
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "course_id")
+    @JoinColumn(nullable = false, name = "course_id")
     private Course course;
 
     private LocalDateTime enrolledAt;

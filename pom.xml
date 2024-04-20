@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.machado</groupId>
 	<artifactId>case-tecnico</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>case-tecnico</name>
 	<description>Projeto para o teste técnico para a vaga de Pessoa Desenvolvedora Java na Alura</description>
 	<properties>

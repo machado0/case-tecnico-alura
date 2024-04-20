@@ -35,7 +35,7 @@ public class Course {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(nullable = false, name = "user_id")
     private User instructor;
 
     @NotBlank(message = "Please provide a description")

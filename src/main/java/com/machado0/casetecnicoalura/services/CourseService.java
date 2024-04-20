@@ -3,6 +3,7 @@ package com.machado0.casetecnicoalura.services;
 import com.machado0.casetecnicoalura.domain.course.Course;
 import com.machado0.casetecnicoalura.domain.course.Status;
 import com.machado0.casetecnicoalura.domain.course.exceptions.CourseNotFoundByCodeException;
+import com.machado0.casetecnicoalura.domain.course.exceptions.CourseNotFoundByIdException;
 import com.machado0.casetecnicoalura.domain.user.Role;
 import com.machado0.casetecnicoalura.domain.user.User;
 import com.machado0.casetecnicoalura.domain.user.exceptions.UserIsNotAnInstructorException;
@@ -13,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -49,4 +51,12 @@ public class CourseService {
         return courseRepository.findByIdAndIsActive(id);
     }
 
+    public Course findCourseById(Long id) {
+        return courseRepository.findById(id)
+                .orElseThrow(() -> new CourseNotFoundByIdException(id));
+    }
+
+    public List<Course> findAllCourses() {
+        return courseRepository.findAll();
+    }
 }
